@@ -5,18 +5,12 @@ import (
 	"net/http"
 
 	"github.com/PengWorkSpace/gin-example/pkg/setting"
-	"github.com/gin-gonic/gin"
+	router "github.com/PengWorkSpace/gin-example/routers"
 )
 
 func main() {
 
-	router := gin.Default()
-	router.GET("/test", func(c *gin.Context) {
-
-		c.JSON(200, gin.H{
-			"message": "this is a test message",
-		})
-	})
+	router := router.InitRouter()
 
 	s := &http.Server{
 		Addr:           fmt.Sprintf(":%d", setting.HTTPPort),
